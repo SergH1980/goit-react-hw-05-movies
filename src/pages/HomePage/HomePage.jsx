@@ -1,39 +1,38 @@
 import { useState, useEffect } from 'react';
 
-import { apiTrending } from 'services/api';
+import { ProgressBar } from 'react-loader-spinner';
 
-import { Link } from './HomePage.styled';
+import { apiTrending } from 'services/api';
+import ListItem from 'components/ListItem/ListItem';
 
 export default function HomePage() {
   const [trendingResults, setTrendingResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    apiTrending().then(result => {
-      setTrendingResults(result.results);
-    });
+    const findTrendingList = async () => {
+      try {
+        setIsLoading(true);
+        const { results } = await apiTrending();
+        setTrendingResults(results);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    findTrendingList();
   }, []);
 
   return (
-    <ul
-      style={{
-        width: '1980px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingLeft: '40px',
-      }}
-    >
-      {trendingResults.map(movie => {
-        return (
-          <li
-            key={movie.id}
-            style={{
-              paddingBottom: '10px',
-            }}
-          >
-            <Link>{movie.title}</Link>
-          </li>
-        );
-      })}
-    </ul>
+    <div>
+      {isLoading ? (
+        <ProgressBar />
+      ) : (
+        <ul>
+          <ListItem resultArray={trendingResults} />
+        </ul>
+      )}
+    </div>
   );
 }

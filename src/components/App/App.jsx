@@ -1,13 +1,28 @@
-import { UserRoutes } from 'components/UserRoutes/UserRoutes';
-import { NavLink } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import Header from 'components/Header/Header';
+import { GlobalStyle } from 'components/GlobalStyle';
+
+import Layout from 'components/Layout/Layout';
+import HomePage from 'pages/HomePage/HomePage';
+import Movies from 'pages/Movies/Movies';
+import MovieDetails from 'pages/MovieDetails/MovieDetails';
+import Cast from 'components/Cast/Cast';
+import Reviews from 'components/Reviews/Reviews';
 
 export default function App() {
   return (
     <div>
-      <Header />
-      <UserRoutes />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        </Route>
+      </Routes>
+      <GlobalStyle />
     </div>
   );
 }
