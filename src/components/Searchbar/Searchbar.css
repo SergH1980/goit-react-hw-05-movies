@@ -1,0 +1,22 @@
+.searchbarHeader {
+  font-size: 60px;
+}
+
+.searchbarInput {
+  padding: 5px 5px;
+  border: 2px solid grey;
+  border-radius: 4px;
+}
+
+.searchbarButton {
+  cursor: pointer;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  padding: 5px 5px;
+  border-radius: 4px;
+  background-color: rgb(107, 214, 178);
+}
+
+.searchbarButton:hover {
+  background-color: orange;
+}
