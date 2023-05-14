@@ -1,0 +1,29 @@
+.errorWrap {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  width: 380px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.errorButton {
+  background-color: rgb(44, 168, 91);
+  color: black;
+  border-radius: 5px;
+  padding: 20px 15px;
+  border: none;
+  cursor: pointer;
+}
+.errorButton:hover {
+  background-color: red;
+  color: white;
+}
+
+.errorLink {
+  cursor: pointer;
+}

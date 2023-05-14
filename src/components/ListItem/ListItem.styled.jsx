@@ -6,6 +6,8 @@ export const emptyArray = styled.div`
 `;
 
 export const Link = styled(LinkStyled)`
+  display: flex;
+  align-items: center;
   font-size: 40px;
 
   text-decoration: none;

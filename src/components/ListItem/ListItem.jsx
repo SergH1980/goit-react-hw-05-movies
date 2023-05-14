@@ -1,7 +1,11 @@
 import { Link } from './ListItem.styled';
 import { MdLocalMovies } from 'react-icons/md';
+import { useLocation } from 'react-router-dom';
 
 export default function ListItem({ resultArray }) {
+  const location = useLocation();
+  // console.log(location);
+
   if (resultArray.length === 0) {
     return (
       <div style={{ fontSize: '30px', color: 'orange' }}>
@@ -9,6 +13,7 @@ export default function ListItem({ resultArray }) {
       </div>
     );
   }
+
   return resultArray.map(movie => {
     return (
       <li
@@ -17,7 +22,11 @@ export default function ListItem({ resultArray }) {
           paddingBottom: '10px',
         }}
       >
-        <Link>
+        <Link
+          to={location.pathname === '/' ? `/movies/${movie.id}` : `${movie.id}`}
+          state={{ from: location.search }}
+          id={movie.id}
+        >
           <MdLocalMovies size={35} /> {movie.title}
         </Link>
       </li>

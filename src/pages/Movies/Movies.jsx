@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { apiQuerySearch } from 'services/api';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import SearchBar from 'components/Searchbar/Searchbar';
 import { ProgressBar } from 'react-loader-spinner';
@@ -10,9 +10,6 @@ export default function Movies() {
   const [searchResult, setSearchResult] = useState(``);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const location = useLocation();
-  console.log(location);
 
   function handleSubmit(value) {
     console.log(value);
@@ -27,7 +24,7 @@ export default function Movies() {
     setSearchParams({ title: value });
   }
 
-  // search on param title change
+  // search on title
   useEffect(() => {
     const findQuerySearch = async () => {
       const title = searchParams.get(`title`);

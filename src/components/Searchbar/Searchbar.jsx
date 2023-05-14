@@ -21,7 +21,7 @@ export default function SearchBar({ onSearch }) {
           handleSubmit(values.query);
         }}
       >
-        <Form>
+        <Form autoComplete="off">
           <Field
             className="searchbarInput"
             id="query"
