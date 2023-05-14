@@ -21,3 +21,17 @@ export const apiMovieSearch = async movieId => {
   const response = await axios.get(`movie/${movieId}?api_key=${API_KEY}`);
   return response.data;
 };
+
+export const apiActorsSearch = async movieId => {
+  const response = await axios.get(
+    `/movie/${movieId}/credits?api_key=${API_KEY}`
+  );
+  return response.data;
+};
+
+export const apiReviewsSearch = async movieId => {
+  const response = await axios.get(
+    `/movie/${movieId}/reviews?api_key=${API_KEY}`
+  );
+  return response.data;
+};

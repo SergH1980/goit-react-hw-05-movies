@@ -1,8 +1,11 @@
+// import PropTypes from 'prop-types';
+
 import './MovieMarkup.css';
 
 export default function MovieMarkup({ movie }) {
   // console.log(movie);
-  const { title, vote_average, overview, genres, poster_path } = movie;
+  const { title, vote_average, overview, genres, poster_path, release_date } =
+    movie;
 
   const finaltitle = title ? `${title}` : `Undefined`;
 
@@ -20,11 +23,19 @@ export default function MovieMarkup({ movie }) {
     ? genres.map(genre => genre.name).join(', ')
     : `Nothing to show`;
 
+  const dateToSeconds = new Date(release_date);
+
+  const finalYear = isNaN(dateToSeconds)
+    ? `Unknown`
+    : dateToSeconds.getFullYear();
+
   return (
     <div className="movieMarkupWrap">
       <img src={finalPath} alt={finaltitle} />
       <div>
-        <h2 className="movieTitle">{finaltitle}</h2>
+        <h2 className="movieTitle">
+          {finaltitle}({finalYear})
+        </h2>
         <p className="movieRating">User Score: {finalVote} </p>
         <div className="movieInfoWrap">
           <p className="movieInfoTitle">Overview</p>
@@ -38,3 +49,15 @@ export default function MovieMarkup({ movie }) {
     </div>
   );
 }
+
+// MovieMarkup.propTypes = {
+//   movie: PropTypes.shape({
+//     title: PropTypes.string.isRequired,
+//     vote_average: PropTypes.number.isRequired,
+//     overview: PropTypes.string.isRequired,
+//     poster_path: PropTypes.string,
+//     release_date: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     // genres: PropTypes.arrayOf(PropTypes.string.isRequired),
+//   }).isRequired,
+// };

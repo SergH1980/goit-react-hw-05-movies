@@ -1,0 +1,32 @@
+.actorList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.actorWrap {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.actorWrap:hover {
+  box-shadow: orange 0px 5px 15px;
+}
+
+.actorPhoto {
+  width: 200px;
+  height: 300px;
+}
+
+.actorName {
+  font-weight: 500;
+}
+
+.actorCharacter {
+  font-size: 12px;
+}
+
+.castError {
+  font-size: 30px;
+  color: red;
+}

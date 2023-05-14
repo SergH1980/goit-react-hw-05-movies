@@ -1,6 +1,8 @@
-// import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
+import { Suspense } from 'react';
+
 import { useState, useEffect } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { apiMovieSearch } from 'services/api';
 import { ProgressBar } from 'react-loader-spinner';
 
@@ -12,10 +14,10 @@ export default function MovieDetails() {
 
   const { movieId } = useParams();
   const location = useLocation();
-  console.log(location);
-  console.log(location.state);
+
   const backLinkHref =
     location.state.from === '' ? `/` : `/movies/${location.state.from}`;
+
   useEffect(() => {
     const findMovie = async () => {
       try {
@@ -31,16 +33,27 @@ export default function MovieDetails() {
     findMovie();
   }, [movieId]);
 
-  if (movieInfo.length === 0) {
-    return;
-  }
   return (
     <div>
-      <button>
-        <Link to={backLinkHref}>Go back</Link>
-      </button>
+      <button>{<Link to={backLinkHref}>Go back</Link>}</button>
 
       {isLoading ? <ProgressBar /> : <MovieMarkup movie={movieInfo} />}
+      <p>Additional information:</p>
+      <ul>
+        <li>
+          <Link to="cast" state={{ from: location.state.from }}>
+            Cast
+          </Link>
+        </li>
+        <li>
+          <Link to="reviews" state={{ from: location.state.from }}>
+            Reviews
+          </Link>
+        </li>
+      </ul>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }

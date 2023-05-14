@@ -1,6 +1,7 @@
 import { Link } from './ListItem.styled';
 import { MdLocalMovies } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 
 export default function ListItem({ resultArray }) {
   const location = useLocation();
@@ -33,3 +34,16 @@ export default function ListItem({ resultArray }) {
     );
   });
 }
+
+// ListItem.propTypes = {
+//   resultArray: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       title: PropTypes.string.isRequired,
+//       release_date: PropTypes.string.isRequired,
+//       overview: PropTypes.string.isRequired,
+//       poster_path: PropTypes.string,
+//       vote_average: PropTypes.number.isRequired,
+//     })
+//   ).isRequired,
+// };

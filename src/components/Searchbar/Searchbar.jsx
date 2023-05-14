@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import './Searchbar.css';
@@ -36,3 +36,8 @@ export default function SearchBar({ onSearch }) {
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+  initialValues: PropTypes.string,
+};

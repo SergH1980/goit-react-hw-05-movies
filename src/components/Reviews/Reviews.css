@@ -1,0 +1,30 @@
+.reviewList {
+  margin-top: 20px;
+}
+
+.reviewWrap {
+  /* padding-left: 16px;
+  padding-right: 16px; */
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.reviewWrap:hover {
+  box-shadow: orange 0px 5px 15px;
+}
+
+.authorName {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.actorCharacter {
+  font-size: 12px;
+}
+
+.emptyReviews {
+  color: red;
+  font-size: 30px;
+}

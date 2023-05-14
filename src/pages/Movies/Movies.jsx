@@ -12,7 +12,6 @@ export default function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   function handleSubmit(value) {
-    console.log(value);
     if (value === ``) {
       alert(`Please enter search query`);
       return;
